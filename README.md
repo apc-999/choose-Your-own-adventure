@@ -18,40 +18,22 @@ Expected outcomes:
 Desired outcomes/Things I would love to add if I was releasing it:
 
 * The option for dependencies - the public domain story that I got off the internet requires the game to keep track of the character
-* 
+* Multiple pre-created stories (Rather than just one unfinished/proof of concept one)
+* Have a GUI, either in egui or IgnitionX - because our team uses both of these, although egui is only used for debugging
+* Allow users to pause and save their progress so they can continue it afterwards
+* Have a program that allows users to write stories without having to edit the JSON files (making it more intuitive for the end user)
 
-Sections:
+## How does the game work?
 
-* [Example](#example)
-* [Quick start](#quick-start)
-* [Demo](#demo)
-* [Goals](#goals)
-* [Who is egui for?](#who-is-egui-for)
-* [State / features](#state)
-* [Integrations](#integrations)
-* [Why immediate mode](#why-immediate-mode)
-* [FAQ](#faq)
-* [Other](#other)
-* [Credits](#credits)
-
-([egui 的中文翻译文档 / chinese translation](https://github.com/Re-Ch-Love/egui-doc-cn/blob/main/README_zh-hans.md))
-
-## Example
-
-``` rust
-ui.heading("My egui Application");
-ui.horizontal(|ui| {
-    ui.label("Your name: ");
-    ui.text_edit_singleline(&mut name);
-});
-ui.add(egui::Slider::new(&mut age, 0..=120).text("age"));
-if ui.button("Click each year").clicked() {
-    age += 1;
+The game is a terminal based game (although I'd love to have a GUI with it) and goes through the selected adventure (using JSON files to store the adventure) allowing users to pick their options as they go along, the adventure they end up with is written to a txt file at the end so that You can see the journey You took at the end.
+``` JSON
+{
+  "1": {
+    "display": "What the story is",
+    "options": [{"page": 2,"display": "Can either be null or text"},{"page": 3,"display": "Each option is stored within the array/vector"}]
+  }
 }
-ui.label(format!("Hello '{}', age {}", name, age));
 ```
-
-<img src="media/demo.gif">
 
 ## Quick start
 
